@@ -19,3 +19,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.text-icon {
+  width:14px;
+  vertical-align:bottom;
+  margin-left:6px;
+  margin-right:6px;
+  height: 17px;
+}

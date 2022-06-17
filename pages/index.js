@@ -10,6 +10,7 @@ import BoxSuscripcion from '../components/index-carvuk-pro'
 import NewsSection from '../components/index-pr-banner'
 import ChatwootWidget from '../components/utils-chatwoot'
 import FooterSection from '../components/footer'
+import HomeIOS from '../components/addHomeIOS.js'
 import { useState, useEffect } from 'react'
 
 
@@ -37,11 +38,6 @@ const IndexPage = () => {
 
   return(
     <div>
-      {showInstallMessage? (
-        <p>hola vicente!</p>
-      ) : (
-        <p></p>
-      ) }
       <HeadPage icon='' 
                  href='https://carvuk.com' 
                  title='Carvuk: Servicio para vehículos a domicilio' 
@@ -59,6 +55,13 @@ const IndexPage = () => {
       <NewsSection/>
       <ChatwootWidget/>
       <FooterSection/>
+      <>
+      {showInstallMessage? (
+        <HomeIOS />
+      ) : (
+        <p></p>
+      ) }
+      </>
     </div>
     )
   }
