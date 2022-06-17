@@ -10,27 +10,29 @@ import BoxSuscripcion from '../components/index-carvuk-pro'
 import NewsSection from '../components/index-pr-banner'
 import ChatwootWidget from '../components/utils-chatwoot'
 import FooterSection from '../components/footer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 const IndexPage = () => {
-  if (typeof window !== "undefined") {
-    // Detects if device is on iOS 
-    const isIos = () => {
-      const userAgent = window.navigator.userAgent.toLowerCase();
-      return /iphone|ipad|ipod/.test( userAgent );
-    }
-    // Detects if device is in standalone mode
-    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
-  
-    // Checks if should display install popup notification:
-    if (isIos() && !isInStandaloneMode()) {
-      setshowInstallMessage(true);
-    }
-  }
-
   const [showInstallMessage, setshowInstallMessage] = useState(false);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Detects if device is on iOS 
+      const isIos = () => {
+        const userAgent = window.navigator.userAgent.toLowerCase();
+        return /iphone|ipad|ipod/.test( userAgent );
+      }
+      // Detects if device is in standalone mode
+      const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+  
+      // Checks if should display install popup notification:
+      if (isIos() && !isInStandaloneMode() && !showInstallMessage) {
+        setshowInstallMessage(true);
+      }
+    }
+  }, [showInstallMessage]);
+  
   console.log(showInstallMessage)
 
   return(
